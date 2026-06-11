@@ -93,7 +93,7 @@ $$y_{comp} = y_{model}^* - y_{model}$$
 
 $$e = Y_{sp} - (Y_{actual} - y_{comp}) = Y_{sp} - Y_{actual} + (y_{model}^* - y_{model})$$
 
-当模型精确（$G_p = \tilde{G}_p$）时：
+当模型精确（$G_p = \hat{G}_p$）时：
 
 $$Y_{actual} - y_{model} \approx 0 \quad\Rightarrow\quad e \approx Y_{sp} - y_{model}^*$$
 

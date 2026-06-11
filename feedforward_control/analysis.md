@@ -72,7 +72,7 @@ $$Y(s) = \frac{G_p G_v}{1 + G_c G_p G_v G_m} \cdot Y_{sp}(s) + \frac{G_d + G_f G
 
 $$G_d(0) + G_f(0) \cdot G_t(0) \cdot G_p(0) \cdot G_v(0) = 0$$
 
-$$\boxed{G_f(0) = -\frac{G_d(0)}{G_p(0) \cdot G_v(0) \cdot G_t(0)} = -\frac{2}{1 \cdot 1 \cdot 1} = -2.0}$$
+$$G_f(0) = -\frac{G_d(0)}{G_p(0) \cdot G_v(0) \cdot G_t(0)} = -\frac{2}{1 \cdot 1 \cdot 1} = -2.0$$
 
 稳态前馈就是：**扰动量 × (−2)** → 直接加到控制阀。简单但粗糙，只能消除稳态偏差，无法补偿动态过程。
 
@@ -82,11 +82,11 @@ $$\boxed{G_f(0) = -\frac{G_d(0)}{G_p(0) \cdot G_v(0) \cdot G_t(0)} = -\frac{2}{1
 
 $$G_d(s) + G_f(s) \cdot G_t(s) \cdot G_p(s) \cdot G_v(s) = 0$$
 
-$$\boxed{G_f(s) = -\frac{G_d(s)}{G_p(s) \cdot G_v(s) \cdot G_t(s)}}$$
+$$G_f(s) = -\frac{G_d(s)}{G_p(s) \cdot G_v(s) \cdot G_t(s)}$$
 
 代入具体传递函数：
 
-$$G_f(s) = -\frac{\frac{2}{(s+1)(5s+1)}}{\frac{1}{s+1} \cdot 1 \cdot 1} = -\frac{2}{(s+1)(5s+1)} \cdot (s+1) = \boxed{-\frac{2}{5s+1}}$$
+$$G_f(s) = -\frac{\frac{2}{(s+1)(5s+1)}}{\frac{1}{s+1} \cdot 1 \cdot 1} = -\frac{2}{(s+1)(5s+1)} \cdot (s+1) = -\frac{2}{5s+1}$$
 
 **可实现性分析**：$G_f(s) = -\frac{2}{5s+1}$ 分子阶次 0、分母阶次 1，是严格正则的（分子阶次 ≤ 分母阶次），**物理可实现**，无需近似！实际上 $G_p(s)$ 的 $(s+1)$ 因子恰好与 $G_d(s)$ 的一个 $(s+1)$ 因子相消，使得 $G_f(s)$ 退化为一阶惯性。
 
@@ -116,11 +116,11 @@ $$G_{IMC}(s) = (s+1) \cdot \frac{1}{2s+1} = \frac{s+1}{2s+1}$$
 
 #### Step 3：等效为经典反馈控制器
 
-$$G_c(s) = \frac{G_{IMC}(s)}{1 - G_{IMC}(s) \cdot G_p(s)} = \frac{\frac{s+1}{2s+1}}{1 - \frac{1}{2s+1}} = \frac{s+1}{2s} = \boxed{\frac{1}{2}\left(1 + \frac{1}{s}\right)}$$
+$$G_c(s) = \frac{G_{IMC}(s)}{1 - G_{IMC}(s) \cdot G_p(s)} = \frac{\frac{s+1}{2s+1}}{1 - \frac{1}{2s+1}} = \frac{s+1}{2s} = \frac{1}{2}\left(1 + \frac{1}{s}\right)$$
 
 #### Step 4：识别为 PI 控制器
 
-$$\boxed{G_c(s) = K_c\left(1 + \frac{1}{\tau_I s}\right),\quad K_c = 0.5,\quad \tau_I = 1.0}$$
+$$G_c(s) = K_c\left(1 + \frac{1}{\tau_I s}\right),\quad K_c = 0.5,\quad \tau_I = 1.0$$
 
 > **IMC 方法的优点**：只有一个可调参数 $\tau_c$，物理意义明确——$\tau_c$ 越小响应越快但鲁棒性越差，$\tau_c$ 越大越保守但鲁棒。
 
@@ -187,7 +187,7 @@ $$\Delta u_k = K_c\left[(e_k - e_{k-1}) + \frac{T_s}{\tau_I}e_k\right]$$
 
 **下图为柱状图**，定量比较各方案的峰值偏差：
 
-| 方案 | 峰值 $\vert Y\vert_{max}$ |
+| 方案 | 峰值 $|Y|_{max}$ |
 |------|:--:|
 | 无控制（开环） | 1.994 |
 | 稳态 FF only | 1.336 |

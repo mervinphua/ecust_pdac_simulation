@@ -62,10 +62,10 @@ $$ \begin{bmatrix} T_{17}(s) \\ T_4(s) \end{bmatrix} = \begin{bmatrix} G_{11}(s)
 
 MIMO 系统的核心特征是**回路间耦合**（Loop Interaction）：
 
-- **$G_{11}$（对角，增益 -2.16）**：$R \uparrow \implies T_{17} \downarrow$。回流增加 → 更多冷液回流 → 塔顶温度下降
-- **$G_{12}$（耦合，增益 +1.26）**：$S \uparrow \implies T_{17} \uparrow$。蒸汽增加 → 上升蒸气增多 → 塔顶温度上升
-- **$G_{21}$（耦合，增益 -2.75）**：$R \uparrow \implies T_4 \downarrow$。回流增加 → 塔内液相负荷增加 → 塔底温度下降
-- **$G_{22}$（对角，增益 +4.28）**：$S \uparrow \implies T_4 \uparrow$。蒸汽增加 → 更多热气进入塔底 → 塔底温度上升
+- **$G_{11}$（对角，增益 -2.16）**：$R \uparrow \Rightarrow T_{17} \downarrow$。回流增加 → 更多冷液回流 → 塔顶温度下降
+- **$G_{12}$（耦合，增益 +1.26）**：$S \uparrow \Rightarrow T_{17} \uparrow$。蒸汽增加 → 上升蒸气增多 → 塔顶温度上升
+- **$G_{21}$（耦合，增益 -2.75）**：$R \uparrow \Rightarrow T_4 \downarrow$。回流增加 → 塔内液相负荷增加 → 塔底温度下降
+- **$G_{22}$（对角，增益 +4.28）**：$S \uparrow \Rightarrow T_4 \uparrow$。蒸汽增加 → 更多热气进入塔底 → 塔底温度上升
 
 **控制配对**：$T_{17}\!-\!R$ / $T_4\!-\!S$（对角配对）。符号一致性分析：
 - $G_{11} < 0,\ G_{22} > 0$：对角元素符号相反（一正一负），对角配对合理
@@ -92,17 +92,17 @@ $$\angle G(j\omega_u) = -\pi \quad\Rightarrow\quad -\omega_u \theta - \arctan(\o
 
 即：
 
-$$\boxed{\omega_u \theta + \arctan(\omega_u \tau) = \pi}$$
+$$\omega_u \theta + \arctan(\omega_u \tau) = \pi$$
 
 该方程无法解析求解，需用数值方法（如 `fsolve`）求解 $\omega_u$。
 
 临界增益：
 
-$$\boxed{K_u = \frac{1}{|G(j\omega_u)|} = \frac{\sqrt{1 + (\omega_u \tau)^2}}{|K|}}$$
+$$K_u = \frac{1}{|G(j\omega_u)|} = \frac{\sqrt{1 + (\omega_u \tau)^2}}{|K|}$$
 
 临界周期：
 
-$$\boxed{P_u = \frac{2\pi}{\omega_u}}$$
+$$P_u = \frac{2\pi}{\omega_u}$$
 
 ### 2.3 ZN PI 整定公式
 
@@ -118,13 +118,13 @@ $$\boxed{P_u = \frac{2\pi}{\omega_u}}$$
 
 $$\omega_u = 1.6444 \text{ rad/s},\quad K_u = 6.2976,\quad P_u = 3.8210 \text{ s}$$
 
-$$\boxed{K_c = 2.8339,\quad \tau_I = 3.1842 \text{ s}}$$
+$$K_c = 2.8339,\quad \tau_I = 3.1842 \text{ s}$$
 
 #### Loop 2 ($T_4\!-\!S$)：$G_{22}(s) = \dfrac{4.28 e^{-0.35s}}{9.0s+1}$
 
 $$\omega_u = 4.5576 \text{ rad/s},\quad K_u = 9.5866,\quad P_u = 1.3786 \text{ s}$$
 
-$$\boxed{K_c = 4.3140,\quad \tau_I = 1.1488 \text{ s}}$$
+$$K_c = 4.3140,\quad \tau_I = 1.1488 \text{ s}$$
 
 > **观察**：Loop 2 的临界频率 $\omega_u$ 约为 Loop 1 的 2.8 倍，说明 Loop 2 的动态响应更快（时延 0.35 vs 1.0，时间常数 9.0 vs 8.25）。因此 Loop 2 的 PI 参数中积分时间更短（1.15 vs 3.18 s）。
 
